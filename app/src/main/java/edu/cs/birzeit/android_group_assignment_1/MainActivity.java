@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editEmail, editPassword;
     Button btnSignIn;
 
-    String URL = "https://10.0.3.2/rest/users.php";
+   // String URL = "https://10.0.3.2/rest/users.php";
 
 
 
@@ -25,12 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editEmail = (EditText) findViewById(R.id.editEmail);
         editPassword = (EditText) findViewById(R.id.editPassword);
-        btnSignIn = (Button) findViewById(R.id.btnSignIn);
+
 
 
     }
 
     public void signIn_onClick(View view) {
+
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
     }
