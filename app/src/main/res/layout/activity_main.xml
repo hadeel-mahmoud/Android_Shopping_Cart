@@ -18,9 +18,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="435dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -45,15 +49,6 @@
                 android:textSize="36sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:id="@+id/linearLayout">
 
             <EditText
                 android:id="@+id/editEmail"
@@ -66,16 +61,17 @@
                 android:textColor="#FF192133"
                 android:textColorHint="#A0192133" />
 
-            <EditText android:id="@+id/editPassword"
+            <EditText
+                android:id="@+id/editPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="#FF192133"
-                android:textColorHint="#A0192133"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-light"
                 android:hint="Password"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:inputType="textPassword"
+                android:textColor="#FF192133"
+                android:textColorHint="#A0192133" />
 
             <Button
                 android:id="@+id/btnSignIn"
@@ -85,7 +81,6 @@
                 android:onClick="signIn_onClick"
                 android:text="SIGN IN"
                 android:textStyle="bold" />
-
 
 
         </LinearLayout>
