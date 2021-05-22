@@ -52,10 +52,17 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,mobileArray);
-        ListView listView = (ListView) findViewById(R.id.mobile_list);
-        listView.setAdapter(adapter);
+//        ListView listView = (ListView) findViewById(R.id.mobile_list);
+//        listView.setAdapter(adapter);
     }
 
+    public void signIn_onClick(View view) {
+
+        Intent intent =new Intent(this, addStudent.class);
+        startActivity(intent);
+
+
+    }
 
     }
 
