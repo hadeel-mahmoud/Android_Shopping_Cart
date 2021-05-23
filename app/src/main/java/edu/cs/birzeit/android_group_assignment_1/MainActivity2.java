@@ -128,11 +128,6 @@ public class MainActivity2 extends AppCompatActivity {
         }
         return str;
     }
-//
-//    public void btnOpenOnClick(View view) {
-//        Intent intent = new Intent(this, SecondActivity.class);
-//        startActivity(intent);
-//    }
 
     private class getStudents extends AsyncTask<String, Void, String> {
         @Override
@@ -141,15 +136,6 @@ public class MainActivity2 extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-//            finalResult=result;
-//            System.out.println("result");
-//
-//            if(result.equals("true")){
-//                startActivity(intent);
-//            }else{
-//                Toast.makeText(getBaseContext(), "Wrong credentials ", Toast.LENGTH_LONG).show();
-//
-//            }
             System.out.println("result");
 
             System.out.println(result);
