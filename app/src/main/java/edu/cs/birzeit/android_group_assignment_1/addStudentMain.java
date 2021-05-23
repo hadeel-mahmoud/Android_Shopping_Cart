@@ -8,17 +8,16 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class addStudent extends AppCompatActivity {
-    Spinner mySpinner;
+public class addStudentMain extends AppCompatActivity {
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_student);
+        setContentView(R.layout.activity_add_student_main);
+        spinner = findViewById(R.id.spinner);
         spinner();
     }
-
-
 
     private void spinner() {
 
@@ -33,8 +32,6 @@ public class addStudent extends AppCompatActivity {
         cities.add("Rafah");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, cities);
-        mySpinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);
     }
-
-
 }

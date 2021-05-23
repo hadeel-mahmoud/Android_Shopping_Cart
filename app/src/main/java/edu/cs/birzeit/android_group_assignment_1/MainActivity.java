@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void signIn_onClick(View view) {
 
-        String url =  "http://192.168.0.102:80/rest/login.php?email="+editEmail.getText()+"&userPassword="+editPassword.getText();
+        String url =  "http://192.168.1.61:80/rest/login.php?email="+editEmail.getText()+"&userPassword="+editPassword.getText();
 //                "https://10.0.2.2/rest/login.php?email=" +editEmail.getText()+"&userPassword="+editPassword.getText();
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)

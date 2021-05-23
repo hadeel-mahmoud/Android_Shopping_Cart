@@ -1,5 +1,4 @@
 package edu.cs.birzeit.android_group_assignment_1;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,10 +30,10 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, mobileArray);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_main2, mobileArray);
 //        ListView listView = (ListView) findViewById(R.id.mobile_list);
 //        listView.setAdapter(adapter);
-        String url = "http://192.168.0.102/rest/get_all.php";
+        String url = "http://192.168.1.61:80/rest/get_all.php";
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -51,7 +50,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onClickAdd(View view) {
 
-        Intent intent=new Intent(this, addStudent.class);
+        Intent intent=new Intent(this, addStudentMain.class);
         startActivity(intent);
 
 
