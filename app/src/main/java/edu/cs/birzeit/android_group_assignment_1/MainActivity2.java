@@ -26,7 +26,6 @@ public class MainActivity2 extends AppCompatActivity {
     // Array of strings...
     String[] mobileArray = {"Android", "IPhone", "WindowsMobile", "Blackberry",
             "WebOS", "Ubuntu", "Windows7", "Max OS X"};
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +34,6 @@ public class MainActivity2 extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, mobileArray);
 //        ListView listView = (ListView) findViewById(R.id.mobile_list);
 //        listView.setAdapter(adapter);
-    }
-
-    public void onClickAdd(View view) {
-
         String url = "http://192.168.0.102/rest/get_all.php";
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
@@ -50,9 +45,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         } else {
             MainActivity2.getStudents runner = new MainActivity2.getStudents();
-            intent = new Intent(this, MainActivity2.class);
             runner.execute(url);
         }
+    }
+
+    public void onClickAdd(View view) {
+
+        Intent intent=new Intent(this, addStudent.class);
+        startActivity(intent);
+
 
 
     }
