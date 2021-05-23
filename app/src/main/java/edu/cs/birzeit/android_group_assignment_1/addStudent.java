@@ -15,7 +15,7 @@ public class addStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
-        spinner();
+//        spinner();
     }
 
 
@@ -33,7 +33,7 @@ public class addStudent extends AppCompatActivity {
         cities.add("Rafah");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, cities);
-        mySpinner.setAdapter(adapter);
+//        mySpinner.setAdapter(adapter);
     }
 
 

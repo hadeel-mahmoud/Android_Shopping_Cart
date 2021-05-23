@@ -13,27 +13,35 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    // Array of strings...
-    String[] mobileArray = {"Android", "IPhone", "WindowsMobile", "Blackberry",
-            "WebOS", "Ubuntu", "Windows7", "Max OS X"};
-
+    private List<Student> studentsList=new ArrayList<>();;
+    RecyclerviewItemAdapter recyclerviewItemAdapter;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, mobileArray);
-//        ListView listView = (ListView) findViewById(R.id.mobile_list);
-//        listView.setAdapter(adapter);
+
         String url = "http://192.168.0.102/rest/get_all.php";
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
@@ -47,6 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
             MainActivity2.getStudents runner = new MainActivity2.getStudents();
             runner.execute(url);
         }
+
     }
 
     public void onClickAdd(View view) {
@@ -64,14 +73,11 @@ public class MainActivity2 extends AppCompatActivity {
 
         URL url = new URL(urlString);
         URLConnection conn = url.openConnection();
-        System.out.println("urlString");
-
-        System.out.println(urlString);
 
         if (!(conn instanceof HttpURLConnection))
             throw new IOException("Not an HTTP connection");
+        System.out.println("Not an HTTP connection");
         try{
-            System.out.println("HTTP connection");
             HttpURLConnection httpConn = (HttpURLConnection) conn;
             httpConn.setAllowUserInteraction(false);
             httpConn.setInstanceFollowRedirects(true);
@@ -79,22 +85,20 @@ public class MainActivity2 extends AppCompatActivity {
             httpConn.connect();
             response = httpConn.getResponseCode();
             if (response == HttpURLConnection.HTTP_OK) {
-                System.out.println("IF HTTP connection");
-
                 in = httpConn.getInputStream();
-
+                System.out.println("connected");
             }
+            System.out.println("GOOD");
+
         }
         catch (Exception ex)
         {
-            System.out.println("entered ex"+ex.getMessage());
+            System.out.println("Error connecting"+"hi");
+
 
             Log.d("Networking", ex.getLocalizedMessage());
             throw new IOException("Error connecting");
         }
-        System.out.println("in");
-
-        System.out.println(in.toString());
 
         return in;
     }
@@ -136,9 +140,40 @@ public class MainActivity2 extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-            System.out.println("result");
-
+            System.out.println("result"+result);
             System.out.println(result);
 
+
+            prepareItems(result);
+
+
+
         }
-    }}
+    }
+    private void prepareItems(String jsonObject){
+        int i;
+//        for(i = 0; i < 3; i++) {
+//            Student student = new Student("Student","Name");
+//            studentsList.add(student);
+//        }
+//        Gson gson = new Gson();
+//        Type type = new TypeToken<List<Student>>(){}.getType();
+//        List<Student> contactList = gson.fromJson(jsonObject, type);
+//        for (Student contact : contactList){
+////            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth(),students.getAddress(),students.getGrade(),students.getGender());
+//
+//            System.out.println("Contact Details");
+//            Student student = new Student(contact.getFirstName(), contact.getLastName());
+//            studentsList.add(student);
+//            System.out.println(contact.getFirstName() + "-" + contact.getLastName());
+//        }
+//
+//        recyclerviewItemAdapter = new RecyclerviewItemAdapter(studentsList);
+//        recyclerView= findViewById(R.id.recycleView);
+//        recyclerView.setHasFixedSize(true);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(recyclerviewItemAdapter);
+    }
+}
