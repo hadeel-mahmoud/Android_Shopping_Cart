@@ -20,8 +20,8 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="212dp"
-            android:layout_height="wrap_content"
+            android:layout_width="258dp"
+            android:layout_height="59dp"
             android:fontFamily="sans-serif-black"
             android:text="Add student"
             android:textColor="#A62929"
@@ -29,7 +29,7 @@
 
         <EditText
             android:id="@+id/ed_firstname"
-            android:layout_width="wrap_content"
+            android:layout_width="242dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Enter Your First Name "
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/ed_lastname"
-            android:layout_width="wrap_content"
+            android:layout_width="242dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Enter Your Last Name "
@@ -45,24 +45,24 @@
 
         <EditText
             android:id="@+id/ed_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="243dp"
+            android:layout_height="61dp"
             android:ems="10"
             android:hint="Enter Your E-mail"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/grade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="59dp"
             android:ems="10"
             android:hint="Enter Your Grade"
             android:inputType="none|number" />
 
         <EditText
             android:id="@+id/ed_dateOfbirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="237dp"
+            android:layout_height="59dp"
             android:ems="10"
             android:hint="Enter Date of Birth"
             android:inputType="date" />
@@ -83,7 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Gender:" />
+                    android:text="Gender:"
+                    android:textColor="#A62929"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <RadioGroup
@@ -107,13 +110,12 @@
             </RadioGroup>
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="246dp"
+            android:layout_height="51dp"
             android:gravity="center|left"
             android:orientation="horizontal">
-
-
 
 
             <TextView
@@ -127,55 +129,10 @@
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="94dp"
+                android:layout_width="129dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Courses:"
-            android:textColor="#A62929"
-            android:textSize="18sp" />
-
-        <CheckBox
-            android:id="@+id/mathBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Math"
-
-            android:textSize="18sp" />
-
-        <CheckBox
-            android:id="@+id/scienceBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Science"
-
-            android:textSize="18sp" />
-
-        <CheckBox
-            android:id="@+id/arabicBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Arabic"
-
-            android:textSize="18sp" />
-
-        <CheckBox
-            android:id="@+id/englishBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="English"
-
-            android:textSize="18sp" />
 
         <Button
             android:id="@+id/button"
