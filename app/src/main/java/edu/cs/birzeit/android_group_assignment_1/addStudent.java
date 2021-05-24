@@ -27,7 +27,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 
-public class addStudentMain extends AppCompatActivity {
+public class addStudent extends AppCompatActivity {
 
     EditText firstName,lastName, email,grade,DateOfBirth ;
 
@@ -43,7 +43,7 @@ public class addStudentMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_student_main);
+        setContentView(R.layout.activity_add_student);
         setUpViews();
 
 
@@ -81,44 +81,44 @@ public class addStudentMain extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-    public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId()) {
-
-            case R.id.mathBox:
-                if (checked)
-                    courses = findViewById(R.id.mathBox);
-
-                else
-
-                    break;
-            case R.id.scienceBox:
-                if (checked)
-                    courses = findViewById(R.id.scienceBox);
-
-                else
-
-                    break;
-            case R.id.arabicBox:
-                if (checked)
-                    courses = findViewById(R.id.arabicBox);
-
-                else
-
-                    break;
-            case R.id.englishBox:
-                if (checked)
-                    courses = findViewById(R.id.englishBox);
-
-                else
-
-                    break;
-
-
-        }
-    }
+//    public void onCheckboxClicked(View view) {
+//        // Is the view now checked?
+//        boolean checked = ((CheckBox) view).isChecked();
+//
+//        switch(view.getId()) {
+//
+//            case R.id.mathBox:
+//                if (checked)
+//                    courses = findViewById(R.id.mathBox);
+//
+//                else
+//
+//                    break;
+//            case R.id.scienceBox:
+//                if (checked)
+//                    courses = findViewById(R.id.scienceBox);
+//
+//                else
+//
+//                    break;
+//            case R.id.arabicBox:
+//                if (checked)
+//                    courses = findViewById(R.id.arabicBox);
+//
+//                else
+//
+//                    break;
+//            case R.id.englishBox:
+//                if (checked)
+//                    courses = findViewById(R.id.englishBox);
+//
+//                else
+//
+//                    break;
+//
+//
+//        }
+//    }
 
 
     private String processRequest(String restUrl) throws UnsupportedEncodingException {
@@ -223,9 +223,10 @@ public class addStudentMain extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(addStudentMain.this, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(addStudent.this, result, Toast.LENGTH_SHORT).show();
         }
     }
+
     public void addStd_onclick(View view) {
 
         String restUrl = "http://192.168.1.61:80/rest/student_table.php";
