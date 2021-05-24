@@ -7,8 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -19,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,9 +31,11 @@ import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private List<Student> studentsList=new ArrayList<>();;
+    private final List<Student> studentsList = new ArrayList<>();
     RecyclerviewItemAdapter recyclerviewItemAdapter;
     RecyclerView recyclerView;
+    EditText searchText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +59,26 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onClickAdd(View view) {
 
-        Intent intent=new Intent(this, addStudentMain.class);
+        Intent intent = new Intent(this, addStudent.class);
         startActivity(intent);
 
 
+    }
+
+    public void searchClick(View view) {
+
+//        Intent intent=new Intent(this, addStudentMain.class);
+//        startActivity(intent);
+        searchText = (EditText) findViewById(R.id.searchEdt);
+        System.out.println(searchText + "SENT");
+
+        prepareItems(searchText.getText().toString(), true);
+        System.out.println();
+
 
     }
-    private InputStream OpenHttpConnection(String urlString) throws IOException
-    {
+
+    private InputStream OpenHttpConnection(String urlString) throws IOException {
         InputStream in = null;
         int response = -1;
 
@@ -77,7 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
         if (!(conn instanceof HttpURLConnection))
             throw new IOException("Not an HTTP connection");
         System.out.println("Not an HTTP connection");
-        try{
+        try {
             HttpURLConnection httpConn = (HttpURLConnection) conn;
             httpConn.setAllowUserInteraction(false);
             httpConn.setInstanceFollowRedirects(true);
@@ -90,10 +101,8 @@ public class MainActivity2 extends AppCompatActivity {
             }
             System.out.println("GOOD");
 
-        }
-        catch (Exception ex)
-        {
-            System.out.println("Error connecting"+ex.getLocalizedMessage()+ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Error connecting" + ex.getLocalizedMessage() + ex.getMessage());
 
 
             Log.d("Networking", ex.getLocalizedMessage());
@@ -102,8 +111,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         return in;
     }
-    private String DownloadText(String URL)
-    {
+
+    private String DownloadText(String URL) {
         int BUFFER_SIZE = 2000;
         InputStream in = null;
         try {
@@ -118,7 +127,7 @@ public class MainActivity2 extends AppCompatActivity {
         String str = "";
         char[] inputBuffer = new char[BUFFER_SIZE];
         try {
-            while ((charRead = isr.read(inputBuffer))>0) {
+            while ((charRead = isr.read(inputBuffer)) > 0) {
                 //---convert the chars to a String---
                 String readString =
                         String.copyValueOf(inputBuffer, 0, charRead);
@@ -138,41 +147,63 @@ public class MainActivity2 extends AppCompatActivity {
         protected String doInBackground(String... urls) {
             return DownloadText(urls[0]);
         }
+
         @Override
         protected void onPostExecute(String result) {
-            System.out.println("result"+result);
+            System.out.println("result" + result);
             System.out.println(result);
 
 
-            prepareItems(result);
-
+            prepareItems(result, false);
 
 
         }
     }
-    private void prepareItems(String jsonObject){
-        int i;
-//        for(i = 0; i < 3; i++) {
-//            Student student = new Student("Student","Name");
-//            studentsList.add(student);
-//        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Student>>(){}.getType();
-        List<Student> contactList = gson.fromJson(jsonObject, type);
-        for (Student students : contactList){
-            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth(),students.getAddress(),students.getGrade(),students.getGender());
 
-            System.out.println("Contact Details");
-//            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth());
-            studentsList.add(student);
+    private void prepareItems(String jsonObject, boolean search) {
+        int i;
+
+        if (!search) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Student>>() {
+            }.getType();
+            List<Student> contactList = gson.fromJson(jsonObject, type);
+            for (Student students : contactList) {
+                Student student = new Student(students.getFirstName(), students.getLastName(), students.getEmail(), students.getDateOfBirth(), students.getAddress(), students.getGrade(), students.getGender());
+                studentsList.add(student);
+            }
+            recyclerviewItemAdapter = new RecyclerviewItemAdapter(studentsList);
+            recyclerView = findViewById(R.id.recycleView);
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(recyclerviewItemAdapter);
+        } else {
+            List<Student> searchStudentsList = new ArrayList<>();
+            System.out.println(jsonObject + "Initial List");
+            for (Student student : studentsList) {
+                if (student.getFirstName().contains(jsonObject)) {
+                    System.out.println(student.getFirstName() + "NAME");
+                    Student searchedStudent = new Student(student.getFirstName(), student.getLastName(), student.getEmail(), student.getDateOfBirth(), student.getAddress(), student.getGrade(), student.getGender());
+                    searchStudentsList.add(searchedStudent);
+                    System.out.println(searchedStudent + "ADDED");
+
+                }
+            }
+            System.out.println(searchStudentsList.toString() + "SEARCH LIST");
+//            studentsList.removeAll(studentsList);
+//            studentsList=searchStudentsList;
+            recyclerviewItemAdapter = new RecyclerviewItemAdapter(searchStudentsList);
+            recyclerView = findViewById(R.id.recycleView);
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(recyclerviewItemAdapter);
+
         }
 
-        recyclerviewItemAdapter = new RecyclerviewItemAdapter(studentsList);
-        recyclerView= findViewById(R.id.recycleView);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(recyclerviewItemAdapter);
+
     }
 }
