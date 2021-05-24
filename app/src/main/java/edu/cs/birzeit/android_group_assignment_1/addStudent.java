@@ -81,45 +81,6 @@ public class addStudent extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-//    public void onCheckboxClicked(View view) {
-//        // Is the view now checked?
-//        boolean checked = ((CheckBox) view).isChecked();
-//
-//        switch(view.getId()) {
-//
-//            case R.id.mathBox:
-//                if (checked)
-//                    courses = findViewById(R.id.mathBox);
-//
-//                else
-//
-//                    break;
-//            case R.id.scienceBox:
-//                if (checked)
-//                    courses = findViewById(R.id.scienceBox);
-//
-//                else
-//
-//                    break;
-//            case R.id.arabicBox:
-//                if (checked)
-//                    courses = findViewById(R.id.arabicBox);
-//
-//                else
-//
-//                    break;
-//            case R.id.englishBox:
-//                if (checked)
-//                    courses = findViewById(R.id.englishBox);
-//
-//                else
-//
-//                    break;
-//
-//
-//        }
-//    }
-
 
     private String processRequest(String restUrl) throws UnsupportedEncodingException {
         firstNameTemp = firstName.getText().toString();
@@ -129,6 +90,7 @@ public class addStudent extends AppCompatActivity {
         DateOfBirthTemp = DateOfBirth.getText().toString();
         genderTemp=radioButton.getText().toString();
         spinnerTemp= spinner.getSelectedItem().toString();
+        System.out.println("DATA:"+firstNameTemp+lastNameTemp+emailTemp+gradeTemp+DateOfBirthTemp+genderTemp+spinnerTemp);
 
         String data = URLEncoder.encode("firstName", "UTF-8")
                 + "=" + URLEncoder.encode(firstNameTemp, "UTF-8");
@@ -151,7 +113,7 @@ public class addStudent extends AppCompatActivity {
 
         data += "&" + URLEncoder.encode("address", "UTF-8")
                 + "=" + URLEncoder.encode(spinnerTemp, "UTF-8");
-
+        System.out.println("ENCODED DATA:"+data);
         String text = "";
         BufferedReader reader=null;
 
@@ -183,11 +145,14 @@ public class addStudent extends AppCompatActivity {
                 sb.append(line + "\n");
             }
 
+            System.out.println("IN TRY STMT");
 
             text = sb.toString();
         }
         catch(Exception ex)
         {
+            System.out.println("IN CATCH"+ex.getMessage());
+
             ex.printStackTrace();
         }
         finally
@@ -217,6 +182,8 @@ public class addStudent extends AppCompatActivity {
                 return processRequest(urls[0]);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
+                System.out.println("NOT SUCCESSFULL REQUEST:"+e.getMessage());
+
             }
             return "";
         }
@@ -229,7 +196,7 @@ public class addStudent extends AppCompatActivity {
 
     public void addStd_onclick(View view) {
 
-        String restUrl = "http://192.168.1.61:80/rest/student_table.php";
+        String restUrl = "http://192.168.0.102/rest/students_table2.php";
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
