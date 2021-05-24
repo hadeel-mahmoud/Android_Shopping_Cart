@@ -60,7 +60,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onClickAdd(View view) {
 
-        Intent intent=new Intent(this, addStudent.class);
+        Intent intent=new Intent(this, addStudentMain.class);
         startActivity(intent);
 
 
@@ -93,7 +93,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
         catch (Exception ex)
         {
-            System.out.println("Error connecting"+"hi");
+            System.out.println("Error connecting"+ex.getLocalizedMessage()+ex.getMessage());
 
 
             Log.d("Networking", ex.getLocalizedMessage());
@@ -156,24 +156,23 @@ public class MainActivity2 extends AppCompatActivity {
 //            Student student = new Student("Student","Name");
 //            studentsList.add(student);
 //        }
-//        Gson gson = new Gson();
-//        Type type = new TypeToken<List<Student>>(){}.getType();
-//        List<Student> contactList = gson.fromJson(jsonObject, type);
-//        for (Student contact : contactList){
-////            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth(),students.getAddress(),students.getGrade(),students.getGender());
-//
-//            System.out.println("Contact Details");
-//            Student student = new Student(contact.getFirstName(), contact.getLastName());
-//            studentsList.add(student);
-//            System.out.println(contact.getFirstName() + "-" + contact.getLastName());
-//        }
-//
-//        recyclerviewItemAdapter = new RecyclerviewItemAdapter(studentsList);
-//        recyclerView= findViewById(R.id.recycleView);
-//        recyclerView.setHasFixedSize(true);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.setAdapter(recyclerviewItemAdapter);
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Student>>(){}.getType();
+        List<Student> contactList = gson.fromJson(jsonObject, type);
+        for (Student students : contactList){
+            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth(),students.getAddress(),students.getGrade(),students.getGender());
+
+            System.out.println("Contact Details");
+//            Student student = new Student(students.getFirstName(), students.getLastName(),students.getEmail(),students.getDateOfBirth());
+            studentsList.add(student);
+        }
+
+        recyclerviewItemAdapter = new RecyclerviewItemAdapter(studentsList);
+        recyclerView= findViewById(R.id.recycleView);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(recyclerviewItemAdapter);
     }
 }

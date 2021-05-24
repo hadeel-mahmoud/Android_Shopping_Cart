@@ -1,32 +1,38 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
 public class Student {
-    private String firstName;
-    private String lastName;
+    private String firstName="";
+    private String lastName="";
 
-    private String email;
-    private String dateOfBirth;
-    private String address;
-    private String grade;
-    private String gender;
-
-
+    private String email="";
+    private String dateOfBirth="";
+    private String address="";
+    private String grade="";
+    private String gender="";
 
 
-    public Student(String name, String lName,String email,String dateOfBirth,String address,String grade,String gender) {
+
+
+    public Student(String name, String lName,String Email,String DateOfBirth,String Address,String Grade,String Gender) {
         firstName = name;
         lastName = lName;
-
-        email = lName;
-        dateOfBirth = lName;
-        address = lName;
-        grade = lName;
-        gender = lName;
+        email = Email;
+        dateOfBirth = DateOfBirth;
+        address = Address;
+        grade = Grade;
+        gender = Gender;
 
     }
 
-    public Student(String firstName, String lastName) {
-    }
+
+
+//    public Student(String FirstName, String LName, String Email, String DateOfBirth) {
+//        firstName = FirstName;
+//        lastName = LName;
+//        email = Email;
+//        dateOfBirth = DateOfBirth;
+//
+//    }
 
     public String getFirstName() {
         return firstName;
