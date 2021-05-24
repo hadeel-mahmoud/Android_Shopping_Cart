@@ -84,5 +84,8 @@ public class Student {
         this.gender = gender;
     }
 
-
+    public String toString()
+    {
+        return firstName + " " + lastName + " " + email + " " + dateOfBirth + " " + address+" " + grade+""+gender;
+    }
 }
