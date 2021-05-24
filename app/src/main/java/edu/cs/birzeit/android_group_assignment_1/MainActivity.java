@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     JSONArray jsonArray=null;
 
     EditText editEmail, editPassword;
-    String URL = "https://10.0.2.2/rest/login.php?email=nez.hadeel@gmail.com&userPassword=123456789";
     String finalResult=null;
     Intent intent;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void signIn_onClick(View view) {
 
-        String url =  "http://192.168.1.61:80/rest/login.php?email="+editEmail.getText()+"&userPassword="+editPassword.getText();
+        String url =  "http:///192.168.0.102/rest/login.php?email="+editEmail.getText()+"&userPassword="+editPassword.getText();
 //                "https://10.0.2.2/rest/login.php?email=" +editEmail.getText()+"&userPassword="+editPassword.getText();
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)

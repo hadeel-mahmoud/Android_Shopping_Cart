@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Android_Group_Assignment_1"
 
         android:usesCleartextTraffic="true">
-        <activity android:name=".addStudent" />
+        <activity android:name=".addStudent" android:exported="true" />
         <activity android:name=".MainActivity2" android:exported="true"/>
         <activity android:name=".MainActivity">
             <intent-filter>

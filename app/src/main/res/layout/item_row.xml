@@ -47,15 +47,7 @@
         android:textStyle="bold"
         tools:text="@tools:sample/full_names" />
 
-    <TextView
-        android:id="@+id/DOB"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        tools:text="@tools:sample/full_names" />
+
 
     <TextView
         android:id="@+id/gender"

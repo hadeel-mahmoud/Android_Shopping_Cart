@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -54,7 +56,6 @@ public class addStudent extends AppCompatActivity {
         lastName = (EditText)findViewById(R.id.ed_lastname);
         email = (EditText)findViewById(R.id.ed_email);
         grade = (EditText)findViewById(R.id.grade);
-        DateOfBirth = (EditText)findViewById(R.id.ed_dateOfbirth);
 
         radioGroup = (RadioGroup) findViewById(R.id.radio);
         int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -83,95 +84,110 @@ public class addStudent extends AppCompatActivity {
 
 
     private String processRequest(String restUrl) throws UnsupportedEncodingException {
+
         firstNameTemp = firstName.getText().toString();
         lastNameTemp = lastName.getText().toString();
         emailTemp = email.getText().toString();
         gradeTemp = grade.getText().toString();
-        DateOfBirthTemp = DateOfBirth.getText().toString();
-        genderTemp=radioButton.getText().toString();
+//        DateOfBirthTemp = DateOfBirth.getText().toString();
+        genderTemp="Grade:"+radioButton.getText().toString();
         spinnerTemp= spinner.getSelectedItem().toString();
-        System.out.println("DATA:"+firstNameTemp+lastNameTemp+emailTemp+gradeTemp+DateOfBirthTemp+genderTemp+spinnerTemp);
 
-        String data = URLEncoder.encode("firstName", "UTF-8")
-                + "=" + URLEncoder.encode(firstNameTemp, "UTF-8");
+        if(firstNameTemp.length()!=0&&lastNameTemp.length()!=0&&emailTemp.length()!=0&&gradeTemp.length()!=0&&genderTemp.length()!=0&&spinnerTemp.length()!=0){
 
-        data += "&" + URLEncoder.encode("lastName", "UTF-8") + "="
-                + URLEncoder.encode(lastNameTemp, "UTF-8");
+            if((!TextUtils.isEmpty(emailTemp) && Patterns.EMAIL_ADDRESS.matcher(emailTemp).matches())){
+                String data = URLEncoder.encode("firstName", "UTF-8")
+                        + "=" + URLEncoder.encode(firstNameTemp, "UTF-8");
 
-        data += "&" + URLEncoder.encode("email", "UTF-8")
-                + "=" + URLEncoder.encode(emailTemp, "UTF-8");
+                data += "&" + URLEncoder.encode("lastName", "UTF-8") + "="
+                        + URLEncoder.encode(lastNameTemp, "UTF-8");
 
-        data += "&" + URLEncoder.encode("grade", "UTF-8")
-                + "=" + URLEncoder.encode(gradeTemp, "UTF-8");
+                data += "&" + URLEncoder.encode("email", "UTF-8")
+                        + "=" + URLEncoder.encode(emailTemp, "UTF-8");
+
+                data += "&" + URLEncoder.encode("grade", "UTF-8")
+                        + "=" + URLEncoder.encode(gradeTemp, "UTF-8");
 
 
-        data += "&" + URLEncoder.encode("DateOfBirth", "UTF-8")
-                + "=" + URLEncoder.encode(DateOfBirthTemp, "UTF-8");
+//        data += "&" + URLEncoder.encode("DateOfBirth", "UTF-8")
+//                + "=" + URLEncoder.encode(DateOfBirthTemp, "UTF-8");
 
-        data += "&" + URLEncoder.encode("gender", "UTF-8")
-                + "=" + URLEncoder.encode(genderTemp, "UTF-8");
+                data += "&" + URLEncoder.encode("gender", "UTF-8")
+                        + "=" + URLEncoder.encode(genderTemp, "UTF-8");
 
-        data += "&" + URLEncoder.encode("address", "UTF-8")
-                + "=" + URLEncoder.encode(spinnerTemp, "UTF-8");
-        System.out.println("ENCODED DATA:"+data);
-        String text = "";
-        BufferedReader reader=null;
+                data += "&" + URLEncoder.encode("address", "UTF-8")
+                        + "=" + URLEncoder.encode(spinnerTemp, "UTF-8");
+                System.out.println("ENCODED DATA:"+data);
+                String text = "";
+                BufferedReader reader=null;
 
-        // Send data
-        try
-        {
+                // Send data
+                try
+                {
 
-            // Defined URL  where to send data
-            URL url = new URL(restUrl);
+                    // Defined URL  where to send data
+                    URL url = new URL(restUrl);
 
-            // Send POST data request
+                    // Send POST data request
 
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write( data );
-            wr.flush();
+                    URLConnection conn = url.openConnection();
+                    conn.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                    wr.write( data );
+                    wr.flush();
 
-            // Get the server response
+                    // Get the server response
 
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = "";
+                    reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder sb = new StringBuilder();
+                    String line = "";
 
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
+                    // Read Server Response
+                    while((line = reader.readLine()) != null)
+                    {
+                        // Append server response in string
+                        sb.append(line + "\n");
+                    }
+
+                    System.out.println("IN TRY STMT");
+
+                    text = sb.toString();
+                }
+                catch(Exception ex)
+                {
+                    System.out.println("IN CATCH"+ex.getMessage());
+
+                    ex.printStackTrace();
+                }
+                finally
+                {
+                    try
+                    {
+
+                        reader.close();
+                    }
+
+                    catch(Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                // Show response on activity
+                return text;
+
+
+            }else {
+                Toast.makeText(getBaseContext(), "Email not valid", Toast.LENGTH_LONG).show();
+                return null;
+
             }
 
-            System.out.println("IN TRY STMT");
 
-            text = sb.toString();
+
+        }else {
+            Toast.makeText(getBaseContext(), "Please enter all data", Toast.LENGTH_LONG).show();
+            return null;
         }
-        catch(Exception ex)
-        {
-            System.out.println("IN CATCH"+ex.getMessage());
-
-            ex.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-
-                reader.close();
-            }
-
-            catch(Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-
-        // Show response on activity
-        return text;
-
-
 
     }
 

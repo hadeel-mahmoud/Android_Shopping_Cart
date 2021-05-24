@@ -58,6 +58,8 @@
                 android:focusableInTouchMode="true"
                 android:fontFamily="sans-serif-light"
                 android:hint="Email"
+                android:drawableStart="@drawable/ic_user_foreground"
+
                 android:textColor="#FF192133"
                 android:textColorHint="#A0192133" />
 
@@ -71,7 +73,10 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="#FF192133"
-                android:textColorHint="#A0192133" />
+                android:textColorHint="#A0192133"
+                android:drawableStart="@drawable/ic_lock_foreground"
+
+                />
 
             <Button
                 android:id="@+id/btnSignIn"
