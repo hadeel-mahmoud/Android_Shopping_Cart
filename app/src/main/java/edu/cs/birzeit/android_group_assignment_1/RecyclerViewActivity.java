@@ -1,53 +1,36 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 
-    private final List<Student> studentsList = new ArrayList<>();
+    private final List<Item> studentsList = new ArrayList<>();
     RecyclerviewItemAdapter recyclerviewItemAdapter;
     RecyclerView recyclerView;
     EditText searchText;
 
-    Student[]  studentsArray = new Student[2];
+    Item[]  studentsArray = new Item[2];
 
-    List<Student> list = Arrays.asList(studentsArray);
+    List<Item> list = Arrays.asList(studentsArray);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        studentsArray[0] = new Student("HADEEL", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
-        studentsArray[1] = new Student("LENA", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
+        setContentView(R.layout.recycler_view);
+        studentsArray[0] = new Item("HADEEL", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
+        studentsArray[1] = new Item("LENA", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
 
         prepareItems(false,"");
 
@@ -79,14 +62,13 @@ public class RecyclerViewActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(layoutManager);
         }
         else {
-            List<Student> searchStudentsList = new ArrayList<>();
+            List<Item> searchStudentsList = new ArrayList<>();
 
-            for (Student student : list) {
-                if (student.getFirstName().toLowerCase().contains(searchContent.toLowerCase())) {
-                    System.out.println(student.getFirstName() + "NAME");
-                    Student searchedStudent = new Student(student.getFirstName(), student.getLastName(), student.getEmail(), student.getDateOfBirth(), student.getAddress(), student.getGrade(), student.getGender());
-                    searchStudentsList.add(searchedStudent);
-                    System.out.println(searchedStudent + "ADDED");
+            for (Item item : list) {
+                if (item.getItemName().toLowerCase().contains(searchContent.toLowerCase())) {
+                    Item searchedItem = new Item(item.getItemName(), item.getPrice(), item.getRating(), item.getItemsRemaining(), item.getDescription(), item.getCategory(), item.getSize());
+                    searchStudentsList.add(searchedItem);
+                    System.out.println(searchedItem + "ADDED");
 
                 }
             }

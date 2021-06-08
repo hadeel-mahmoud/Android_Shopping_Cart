@@ -12,11 +12,11 @@ import java.util.List;
 
 public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewItemAdapter.MyViewHolder> {
 
-    private List<Student> studentsList;
+    private List<Item> studentsList;
     private ClickListener clickListener;
 
-    RecyclerviewItemAdapter(List<Student> student){
-        this.studentsList = student;
+    RecyclerviewItemAdapter(List<Item> item){
+        this.studentsList = item;
     }
 
     @Override
@@ -29,14 +29,11 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
     @Override
     public void onBindViewHolder(RecyclerviewItemAdapter.MyViewHolder holder, final int position) {
-        final Student student = studentsList.get(position);
-        holder.firstName.setText(student.getFirstName());
-        holder.lastName.setText(String.valueOf(student.getLastName()));
-        holder.email.setText(String.valueOf(student.getEmail()));
+        final Item item = studentsList.get(position);
+        holder.itemName.setText(item.getItemName());
+        holder.price.setText(String.valueOf(item.getPrice()));
+        holder.rating.setText(String.valueOf(item.getRating()));
 
-        holder.address.setText(String.valueOf(student.getAddress()));
-        holder.grade.setText(String.valueOf(student.getGrade()));
-        holder.gender.setText(String.valueOf(student.getGender()));
 
 
     }
@@ -49,18 +46,15 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView firstName,lastName,email,address,grade,gender;
+        public TextView itemName,price,rating;
         private LinearLayout itemLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            lastName = itemView.findViewById(R.id.lastName);
-            firstName = itemView.findViewById(R.id.firstName);
-            email = itemView.findViewById(R.id.email);
-            address = itemView.findViewById(R.id.address);
-            grade = itemView.findViewById(R.id.grade);
-            gender = itemView.findViewById(R.id.gender);
+            itemName = itemView.findViewById(R.id.itemName);
+            price = itemView.findViewById(R.id.price);
+            rating = itemView.findViewById(R.id.rating);
 
             itemLayout =  itemView.findViewById(R.id.itemLayout);
 
