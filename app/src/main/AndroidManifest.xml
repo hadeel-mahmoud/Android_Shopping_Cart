@@ -14,8 +14,7 @@
 
         android:usesCleartextTraffic="true">
         <activity android:name=".addStudent" android:exported="true" />
-        <activity android:name=".MainActivity2" android:exported="true"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".RecyclerViewActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
