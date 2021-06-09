@@ -1,13 +1,19 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,42 +26,47 @@ public class RecyclerViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EditText searchText;
 
-    Item[]  studentsArray = new Item[2];
+    Item[]  itemsArray = new Item[2];
 
-    List<Item> list = Arrays.asList(studentsArray);
+    List<Item> list = Arrays.asList(itemsArray);
+
+    private RecyclerviewItemAdapter.ClickListener listener;
 
 
+    SharedPreferences prefs ;
+    SharedPreferences.Editor editor ;
+    Gson gson = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view);
-        studentsArray[0] = new Item("HADEEL", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
-        studentsArray[1] = new Item("LENA", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
+        itemsArray[0] = new Item("HADEEL", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
+        itemsArray[1] = new Item("LENA", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
 
         prepareItems(false,"");
+        
+
+        prefs=PreferenceManager.getDefaultSharedPreferences(RecyclerViewActivity.this);
+        editor= prefs.edit();
+        String items = gson.toJson(itemsArray);
+        editor.putString("allItems", items);
+        editor.commit();
 
     }
 
-//    public void onClickAdd(View view) {
-//
-//        Intent intent = new Intent(this, addStudent.class);
-//        startActivity(intent);
-//
-//
-//    }
+
 
     public void searchClick(View view) {
         searchText = (EditText) findViewById(R.id.searchEdt);
-//        System.out.println(searchText + "SENT");
         prepareItems( true,searchText.getText().toString());
     }
 
     private void prepareItems( boolean search,String searchContent) {
-        int i;
 
+        setOnClickListener();
         if (!search) {
 
-            recyclerviewItemAdapter = new RecyclerviewItemAdapter(list);
+            recyclerviewItemAdapter = new RecyclerviewItemAdapter(list,listener);
             recyclerView = findViewById(R.id.recycleView);
             recyclerView.setHasFixedSize(true);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -72,7 +83,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
                 }
             }
-            recyclerviewItemAdapter = new RecyclerviewItemAdapter(searchStudentsList);
+            recyclerviewItemAdapter = new RecyclerviewItemAdapter(searchStudentsList,listener);
             recyclerView = findViewById(R.id.recycleView);
             recyclerView.setHasFixedSize(true);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -83,5 +94,23 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerviewItemAdapter);
 
 
+    }
+
+    private void setOnClickListener() {
+
+        listener=new RecyclerviewItemAdapter.ClickListener(){
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(getApplicationContext(),"Position = "+position+"\n Item = "+"hi",Toast.LENGTH_SHORT).show();
+                Intent displayDataIntent = new Intent(RecyclerViewActivity.this, ViewItemActivity.class);
+
+                String cvString = gson.toJson(position);
+                editor.putString("itemIndex", cvString);
+                editor.commit();
+
+                startActivity(displayDataIntent);
+
+            }
+        };
     }
 }
