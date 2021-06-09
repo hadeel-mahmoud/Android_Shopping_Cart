@@ -59,7 +59,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
     public void searchClick(View view) {
         searchText = (EditText) findViewById(R.id.searchEdt);
         prepareItems( true,searchText.getText().toString());
+
     }
+
 
     private void prepareItems( boolean search,String searchContent) {
 

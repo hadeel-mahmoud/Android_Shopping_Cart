@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Group_Assignment_1"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewItemActivity"></activity>
+        <activity android:name=".ViewItemActivity" />
         <activity
             android:name=".RecyclerViewActivity"
             android:exported="true">
