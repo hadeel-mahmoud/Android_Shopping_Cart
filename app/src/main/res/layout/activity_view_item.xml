@@ -61,26 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="201dp"
-            android:layout_height="33dp"
-            android:layout_gravity="left"
-            android:ems="10"
-            android:fontFamily="sans-serif-black"
-            android:inputType="phone"
-            android:text="Size:"
-            android:textColor="#656E9E"
-            android:textColorHighlight="#407983" />
-
-        <TextView
-            android:id="@+id/size"
-            android:layout_width="205dp"
-            android:layout_height="37dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
-    </LinearLayout>
+        android:padding="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,7 +84,7 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/Price"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_weight="1"
@@ -156,7 +137,7 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/category"
+            android:id="@+id/Category"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:layout_weight="1" />
@@ -172,10 +153,12 @@
             android:layout_width="82dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Rating:" />
+            android:text="Rating:"
+            android:textColor="#5D6698"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/Rating"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />

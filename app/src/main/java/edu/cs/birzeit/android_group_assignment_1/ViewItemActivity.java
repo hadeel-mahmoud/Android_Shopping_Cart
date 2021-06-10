@@ -1,10 +1,12 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.SparseIntArray;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class ViewItemActivity extends AppCompatActivity {
+    EditText  ItemName,Price,Rating,ItemsRemaining,Description,Category;
 
      Item currentItem;
     @Override
@@ -41,7 +44,19 @@ public class ViewItemActivity extends AppCompatActivity {
         System.out.println(currentItem.getItemName()+"NAMEE");
 
 
-        }
+//        ItemName.setText(currentItem.getItemName());
+//        Description.setText(currentItem.getDescription());
+//        ItemsRemaining.setText(currentItem.getItemsRemaining());
+//        Rating.setText(currentItem.getRating());
+//        Category.setText(currentItem.getCategory());
+//        Price.setText(currentItem.getPrice());
+
+
+        //Toast.makeText(getApplicationContext(),"Name: "+movie.getName(), Toast.LENGTH_LONG).show();
+
+
+
+    }
 
     public void addToCart_OnClick(View view) {
         Toast.makeText(getApplicationContext(),"item "+"added to cart",Toast.LENGTH_SHORT).show();
