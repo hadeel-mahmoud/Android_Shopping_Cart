@@ -11,30 +11,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewItemAdapter.MyViewHolder> {
+public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCartAdapter.MyViewHolder> {
 
-    private final List<Item> studentsList;
-    private final ClickListener listener;
+    private List<Item> studentsList;
+    private ClickListener listener;
 
-    RecyclerviewItemAdapter(List<Item> item,ClickListener listener){
+    RecyclerViewCartAdapter(List<Item> item){
         this.studentsList = item;
-        this.listener=listener;
     }
 
     @Override
-    public RecyclerviewItemAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewCartAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item_row,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerviewItemAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerViewCartAdapter.MyViewHolder holder, final int position) {
         final Item item = studentsList.get(position);
-        holder.itemName.setText("Item Name: "+item.getItemName());
-        holder.price.setText("Price: "+ item.getPrice());
-        holder.rating.setText("Rating:"+ item.getRating());
+        holder.itemName.setText(item.getItemName());
+        holder.price.setText(String.valueOf(item.getPrice()));
+        holder.rating.setText(String.valueOf(item.getRating()));
 
 
 
@@ -54,10 +53,17 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
         void onClick(View view, int position);
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MyViewHolder extends RecyclerView.ViewHolder {
+//        private String ItemName;
+//        private int Price ;
+//        private String Rating;
+//        private String ItemsRemaining;
+//        private String Description;
+//        private String Category;
+//        private int Image;
 
         public TextView itemName,price,rating;
-        private final LinearLayout itemLayout;
+        private LinearLayout itemLayout;
         public ImageView image;
 
         public MyViewHolder(View itemView) {
@@ -69,15 +75,13 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
             image=itemView.findViewById(R.id.itemPhoto);
             itemLayout =  itemView.findViewById(R.id.itemLayout);
 
-            itemView.setOnClickListener(this);
-
 
         }
 
-        @Override
-        public void onClick(View view) {
-
-            listener.onClick(view,getAdapterPosition());
-        }
+//        @Override
+//        public void onClick(View view) {
+//
+//            listener.onClick(view,getAdapterPosition());
+//        }
     }
 }
