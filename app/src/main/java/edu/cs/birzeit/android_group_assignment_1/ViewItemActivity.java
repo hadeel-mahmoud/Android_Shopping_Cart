@@ -35,6 +35,8 @@ public class ViewItemActivity extends AppCompatActivity {
 
 
         System.out.println(itemsList.get(0)+"JSONINDEX");
+
+
         currentItem=itemsList.get(Integer.parseInt(itemIndexJson));
         System.out.println(currentItem.getItemName()+"NAMEE");
 
