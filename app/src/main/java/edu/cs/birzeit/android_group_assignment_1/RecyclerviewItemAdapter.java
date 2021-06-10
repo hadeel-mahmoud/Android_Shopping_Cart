@@ -32,9 +32,9 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
     @Override
     public void onBindViewHolder(RecyclerviewItemAdapter.MyViewHolder holder, final int position) {
         final Item item = studentsList.get(position);
-        holder.itemName.setText("Item Name: "+item.getItemName());
-        holder.price.setText("Price: "+ item.getPrice());
-        holder.rating.setText("Rating:"+ item.getRating());
+        holder.itemName.setText(("Item Name: "+item.getItemName()));
+        holder.price.setText(("Price: "+ item.getPrice()+" ILS"));
+        holder.rating.setText(("Rating:"+ item.getRating()));
 
 
 
