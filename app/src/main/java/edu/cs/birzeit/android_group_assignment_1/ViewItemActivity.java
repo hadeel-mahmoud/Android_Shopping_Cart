@@ -1,8 +1,12 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -87,4 +91,22 @@ public class ViewItemActivity extends AppCompatActivity {
         editor.putString("allCartItems", items);
         editor.commit();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_ui,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.item1) {
+            Intent displayDataIntent = new Intent(ViewItemActivity.this, Cart.class);
+
+            startActivity(displayDataIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

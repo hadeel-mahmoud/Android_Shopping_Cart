@@ -14,7 +14,6 @@ import java.util.List;
 public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCartAdapter.MyViewHolder> {
 
     private List<Item> studentsList;
-    private ClickListener listener;
 
     RecyclerViewCartAdapter(List<Item> item){
         this.studentsList = item;
@@ -31,10 +30,12 @@ public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCa
     @Override
     public void onBindViewHolder(RecyclerViewCartAdapter.MyViewHolder holder, final int position) {
         final Item item = studentsList.get(position);
-        holder.itemName.setText(item.getItemName());
-        holder.price.setText(String.valueOf(item.getPrice()));
-        holder.rating.setText(String.valueOf(item.getRating()));
+        holder.itemName.setText(("Item Name: "+item.getItemName()));
+        holder.price.setText(("Price: "+item.getPrice()+"ILS"));
+        holder.rating.setText(("Rating: "+item.getRating()));
 
+        holder.description.setText(("Description: "+item.getDescription()));
+        holder.category.setText(("Category: "+item.getCategory()));
 
 
         holder.image.setImageResource(item.getImage());
@@ -48,10 +49,6 @@ public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCa
         return studentsList.size();
     }
 
-    public interface ClickListener<T> {
-
-        void onClick(View view, int position);
-    }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 //        private String ItemName;
@@ -62,7 +59,7 @@ public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCa
 //        private String Category;
 //        private int Image;
 
-        public TextView itemName,price,rating;
+        public TextView itemName,price,rating,itemsRemaining,description,category;
         private LinearLayout itemLayout;
         public ImageView image;
 
@@ -72,6 +69,12 @@ public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCa
             itemName = itemView.findViewById(R.id.itemName);
             price = itemView.findViewById(R.id.price);
             rating = itemView.findViewById(R.id.rating);
+
+            description = itemView.findViewById(R.id.description);
+            category = itemView.findViewById(R.id.category);
+
+
+
             image=itemView.findViewById(R.id.itemPhoto);
             itemLayout =  itemView.findViewById(R.id.itemLayout);
 
