@@ -40,9 +40,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view);
-        itemsArray[0] = new Item("shoes", "30$", "2","3", "color white ", "Sport", "38");
-        itemsArray[1] = new Item("boot", "20$", "3","1", "red", "normal", "40");
-        itemsArray[2] = new Item("shoes", "10$", "1","1", "blue", "sport", "36");
+//
+//        Pinterest
+//        Nike Torba Torebka
+//        eBay
+//
+
+
+        itemsArray[0] = new Item("Nike Sport Bag", "120", "4.5","3", "NIKE VARSITY GIRL MEDIUM BAG", "Bags",0);
+        itemsArray[1] = new Item("Puma Water Bottle", "30", "3","1", "Puma Unisex Sports Water Bottle Water Bottle Workout Sport Classic", "Water Bottles", 1);
+        itemsArray[2] = new Item("Dumbbells", "60", "4","6", "Yoga Mad Pair of 3Kg Neo Dumbbells - Orange", "Dumbbells", 2);
 
         prepareItems(false,"");
         
@@ -80,7 +87,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
             for (Item item : list) {
                 if (item.getItemName().toLowerCase().contains(searchContent.toLowerCase())) {
-                    Item searchedItem = new Item(item.getItemName(), item.getPrice(), item.getRating(), item.getItemsRemaining(), item.getDescription(), item.getCategory(), item.getSize());
+                    Item searchedItem = new Item(item.getItemName(), item.getPrice(), item.getRating(), item.getItemsRemaining(), item.getDescription(), item.getCategory(), item.getImage());
                     searchStudentsList.add(searchedItem);
                     System.out.println(searchedItem + "ADDED");
 

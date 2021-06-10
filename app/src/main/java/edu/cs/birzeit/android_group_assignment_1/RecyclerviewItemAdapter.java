@@ -12,11 +12,11 @@ import java.util.List;
 
 public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewItemAdapter.MyViewHolder> {
 
-    private List<Item> List;
+    private List<Item> studentsList;
     private ClickListener listener;
 
     RecyclerviewItemAdapter(List<Item> item,ClickListener listener){
-        this.List = item;
+        this.studentsList = item;
         this.listener=listener;
     }
 
@@ -30,7 +30,7 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
     @Override
     public void onBindViewHolder(RecyclerviewItemAdapter.MyViewHolder holder, final int position) {
-        final Item item = List.get(position);
+        final Item item = studentsList.get(position);
         holder.itemName.setText(item.getItemName());
         holder.price.setText(String.valueOf(item.getPrice()));
         holder.rating.setText(String.valueOf(item.getRating()));
@@ -42,7 +42,7 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return studentsList.size();
     }
 
     public interface ClickListener<T> {
@@ -52,7 +52,7 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView itemName,price,rating,size,ItemsRemaining,Description,category;
+        public TextView itemName,price,rating;
         private LinearLayout itemLayout;
 
         public MyViewHolder(View itemView) {
@@ -61,11 +61,9 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
             itemName = itemView.findViewById(R.id.itemName);
             price = itemView.findViewById(R.id.price);
             rating = itemView.findViewById(R.id.rating);
+
             itemLayout =  itemView.findViewById(R.id.itemLayout);
-            ItemsRemaining= itemView.findViewById(R.id.itemLayout);
-            Description= itemView.findViewById(R.id.itemLayout);
-            size =  itemView.findViewById(R.id.itemLayout);
-            category =  itemView.findViewById(R.id.itemLayout);
+
             itemView.setOnClickListener(this);
 
 

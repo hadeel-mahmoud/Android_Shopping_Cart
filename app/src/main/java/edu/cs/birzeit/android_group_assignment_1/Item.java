@@ -9,16 +9,16 @@ public class Item {
     private String ItemsRemaining;
     private String Description;
     private String Category;
-    private String Size;
+    private int Image;
 
 
-    public Item(String itemName, String price, String rating, String itemsRemaining, String description, String category, String size) {
+    public Item(String itemName, String price, String rating, String itemsRemaining, String description, String category, int image) {
         ItemName = itemName;
         Price = price;
         Rating = rating;
         ItemsRemaining = itemsRemaining;
         Description = description;
-        Size = size;
+        Image = image;
         Category = category;
 
     }
@@ -45,13 +45,13 @@ public class Item {
         return Category;
     }
 
-    public String getSize() {
-        return Size;
+    public int getImage() {
+        return Image;
     }
 
 
 
     public String toString() {
-        return ItemName + " " + Price + " " + Rating + " " + ItemsRemaining + " " + Description + " " + Category + ""+ Size + "";
+        return ItemName + " " + Price + " " + Rating + " " + ItemsRemaining + " " + Description + " " + Category + ""+ Image + "";
     }
 }
