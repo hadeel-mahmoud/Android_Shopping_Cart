@@ -40,9 +40,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view);
-        itemsArray[0] = new Item("Nike Sport Bag", "120", "4.5","3", "NIKE VARSITY GIRL MEDIUM BAG", "Bags",R.drawable.img1);
-        itemsArray[1] = new Item("Puma Water Bottle", "30", "3","1", "Puma Unisex Sports Water Bottle Water Bottle Workout Sport Classic", "Water Bottles", R.drawable.img2);
-        itemsArray[2] = new Item("Dumbbells", "60", "4","6", "Yoga Mad Pair of 3Kg Neo Dumbbells - Orange", "Dumbbells", R.drawable.img3);
+        itemsArray[0] = new Item("Nike Sport Bag", 120, "4.5","3", "NIKE VARSITY GIRL MEDIUM BAG", "Bags",R.drawable.img1);
+        itemsArray[1] = new Item("Puma Water Bottle", 30, "3","1", "Puma Unisex Sports Water Bottle Water Bottle Workout Sport Classic", "Water Bottles", R.drawable.img2);
+        itemsArray[2] = new Item("Dumbbells", 60, "4","6", "Yoga Mad Pair of 3Kg Neo Dumbbells - Orange", "Dumbbells", R.drawable.img3);
 
         prepareItems(false,"");
         

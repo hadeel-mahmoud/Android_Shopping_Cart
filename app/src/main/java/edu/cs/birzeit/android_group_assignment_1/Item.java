@@ -4,7 +4,7 @@ public class Item {
 
 
     private String ItemName;
-    private String Price ;
+    private int Price ;
     private String Rating;
     private String ItemsRemaining;
     private String Description;
@@ -12,7 +12,7 @@ public class Item {
     private int Image;
 
 
-    public Item(String itemName, String price, String rating, String itemsRemaining, String description, String category, int image) {
+    public Item(String itemName, int price, String rating, String itemsRemaining, String description, String category, int image) {
         ItemName = itemName;
         Price = price;
         Rating = rating;
@@ -26,7 +26,7 @@ public class Item {
     public String getItemName() {
         return ItemName;
     }
-    public String getPrice() {
+    public int getPrice() {
         return Price;
     }
 

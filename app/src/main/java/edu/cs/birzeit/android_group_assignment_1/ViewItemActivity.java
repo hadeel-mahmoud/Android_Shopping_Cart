@@ -1,12 +1,12 @@
 package edu.cs.birzeit.android_group_assignment_1;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +18,10 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class ViewItemActivity extends AppCompatActivity {
-    EditText  ItemName,Price,Rating,ItemsRemaining,Description,Category;
+    TextView ItemName, Price, Rating, ItemsRemaining, Description, Category;
+    Item currentItem;
+    ImageView image;
 
-     Item currentItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,22 +30,34 @@ public class ViewItemActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Gson gson = new Gson();
         String allItemsJson = prefs.getString("allItems", "");
-        Type type = new TypeToken<List<Item>>() {}.getType();
+        Type type = new TypeToken<List<Item>>() {
+        }.getType();
 
 
         final List<Item> itemsList = gson.fromJson(allItemsJson, type);
-
         String itemIndexJson = prefs.getString("itemIndex", "");
+        currentItem = itemsList.get(Integer.parseInt(itemIndexJson));
 
 
-        System.out.println(itemsList.get(0)+"JSONINDEX");
+        ItemName = findViewById(R.id.itemName);
+        Price = findViewById(R.id.price);
+        Rating = findViewById(R.id.Rating);
+        ItemsRemaining = findViewById(R.id.ItemsRemaining);
+        Description = findViewById(R.id.Description);
+        Category = findViewById(R.id.Category);
+        image = findViewById(R.id.imageView);
 
 
-        currentItem=itemsList.get(Integer.parseInt(itemIndexJson));
-        System.out.println(currentItem.getItemName()+"NAMEE");
+        ItemName.setText(currentItem.getItemName());
+        System.out.println(currentItem.getPrice()+"PRICE");
+        Price.setText(Integer.toString(currentItem.getPrice()));
+        Rating.setText(currentItem.getRating());
+        ItemsRemaining.setText(currentItem.getItemName());
+        Description.setText(currentItem.getDescription());
+        Category.setText(currentItem.getCategory());
 
+        image.setImageResource(currentItem.getImage());
 
-//        ItemName.setText(currentItem.getItemName());
 //        Description.setText(currentItem.getDescription());
 //        ItemsRemaining.setText(currentItem.getItemsRemaining());
 //        Rating.setText(currentItem.getRating());
@@ -55,10 +68,9 @@ public class ViewItemActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(),"Name: "+movie.getName(), Toast.LENGTH_LONG).show();
 
 
-
     }
 
     public void addToCart_OnClick(View view) {
-        Toast.makeText(getApplicationContext(),"item "+"added to cart",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "item " + "added to cart", Toast.LENGTH_SHORT).show();
     }
 }

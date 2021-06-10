@@ -8,17 +8,17 @@
     android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".ViewItemActivity">
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="292dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-black"
-        android:rotationX="-17"
-        android:text="About This Item:)"
-        android:textColor="#3F51B5"
-        android:textSize="24sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/item"-->
+<!--        android:layout_width="292dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:rotationX="-17"-->
+<!--        android:text="About This Item:)"-->
+<!--        android:textColor="#3F51B5"-->
+<!--        android:textSize="24sp" />-->
 
     <ImageView
         android:id="@+id/imageView"
@@ -78,18 +78,17 @@
             android:layout_weight="1"
             android:ems="10"
             android:fontFamily="sans-serif-black"
-            android:inputType="phone"
             android:text="Price:"
             android:textColor="#656E9E"
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/Price"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -106,7 +105,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:fontFamily="sans-serif-black"
-            android:text="Item Remaning:"
+            android:text="Items Remaining:"
             android:textColor="#656E9E"
             android:textColorHighlight="#407983" />
 
