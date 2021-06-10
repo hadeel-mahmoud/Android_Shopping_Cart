@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.SparseIntArray;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,4 +40,8 @@ public class ViewItemActivity extends AppCompatActivity {
 
 
         }
+
+    public void addToCart_OnClick(View view) {
+        Toast.makeText(getApplicationContext(),"item "+"added to cart",Toast.LENGTH_SHORT).show();
     }
+}

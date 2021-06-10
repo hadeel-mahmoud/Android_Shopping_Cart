@@ -26,7 +26,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EditText searchText;
 
-    Item[]  itemsArray = new Item[2];
+    Item[]  itemsArray = new Item[3];
 
     List<Item> list = Arrays.asList(itemsArray);
 
@@ -40,8 +40,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view);
-        itemsArray[0] = new Item("HADEEL", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
-        itemsArray[1] = new Item("LENA", "NEZ", "@gmail","DOB", "ADDRESS", "20", "FEMALE");
+        itemsArray[0] = new Item("shoes", "30$", "2","3", "color white ", "Sport", "38");
+        itemsArray[1] = new Item("boot", "20$", "3","1", "red", "normal", "40");
+        itemsArray[2] = new Item("shoes", "10$", "1","1", "blue", "sport", "36");
 
         prepareItems(false,"");
         

@@ -49,11 +49,11 @@
             android:textColorHighlight="#407983" />
 
         <TextView
+            android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="shoes" />
+            android:inputType="textPersonName" />
 
 
     </LinearLayout>
@@ -76,11 +76,11 @@
             android:textColorHighlight="#407983" />
 
         <TextView
+            android:id="@+id/size"
             android:layout_width="205dp"
             android:layout_height="37dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="38" />
+            android:inputType="textEmailAddress" />
     </LinearLayout>
 
     <LinearLayout
@@ -104,13 +104,12 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone"
-            android:text="30" />
+            android:inputType="phone" />
     </LinearLayout>
 
     <LinearLayout
@@ -132,18 +131,18 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/ItemsRemaining"
             android:layout_width="188dp"
             android:layout_height="46dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:text="5" />
+            android:ems="10" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:background="#AAC8C5"
         android:orientation="horizontal">
 
         <TextView
@@ -158,11 +157,29 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="82dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="sport" />
+            android:text="Rating:" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -182,18 +199,10 @@
             android:textColorHighlight="#407983" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/Description"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="red color" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:orientation="horizontal">
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -205,8 +214,9 @@
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="81dp"
+            android:layout_height="86dp"
             android:layout_weight="1"
+            android:onClick="addToCart_OnClick"
             android:text="Add To Cart" />
     </LinearLayout>
 
