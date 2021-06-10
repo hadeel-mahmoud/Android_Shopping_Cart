@@ -11,11 +11,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#CCDAD9"
+        android:layout_height="match_parent"
+        android:background="@color/ic_lock_background"
         android:gravity="center|top"
         android:orientation="vertical"
-        tools:context=".ViewItemActivity"
-        android:layout_height="match_parent">
+        tools:context=".ViewItemActivity">
 
 
         <ImageView
@@ -27,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#AAC8C5"
+            android:background="#C67055"
             android:orientation="horizontal"
             android:padding="5dp"
             android:paddingTop="100dp"
@@ -43,7 +43,7 @@
                 android:fontFamily="sans-serif-black"
                 android:inputType="textPersonName"
                 android:text="Item Name:"
-                android:textColor="#656E9E"
+                android:textColor="@color/black"
                 android:textColorHighlight="#407983" />
 
             <TextView
@@ -59,13 +59,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/ic_lock_background"
             android:orientation="horizontal"
             android:padding="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#AAC8C5"
+            android:background="@color/ic_lock_background"
             android:orientation="horizontal"
             android:padding="5dp">
 
@@ -78,7 +79,7 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-black"
                 android:text="Price:"
-                android:textColor="#656E9E"
+                android:textColor="@color/black"
                 android:textColorHighlight="#407983" />
 
             <TextView
@@ -92,6 +93,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="43dp"
+            android:background="#C67055"
             android:orientation="horizontal"
             android:padding="5dp">
 
@@ -104,7 +106,7 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-black"
                 android:text="Items Remaining:"
-                android:textColor="#656E9E"
+                android:textColor="@color/black"
                 android:textColorHighlight="#407983" />
 
             <TextView
@@ -119,7 +121,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="#AAC8C5"
+            android:background="@color/ic_lock_background"
             android:orientation="horizontal">
 
             <TextView
@@ -130,7 +132,7 @@
                 android:fontFamily="sans-serif-black"
                 android:shadowColor="#FFFFFF"
                 android:text="Category:"
-                android:textColor="#5D6698"
+                android:textColor="@color/black"
                 android:textColorHighlight="#407983" />
 
             <TextView
@@ -143,6 +145,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="42dp"
+            android:background="#C67055"
             android:orientation="horizontal">
 
             <TextView
@@ -151,7 +154,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Rating:"
-                android:textColor="#5D6698"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -164,7 +167,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#AAC8C5"
+            android:background="@color/ic_lock_background"
             android:orientation="horizontal">
 
             <TextView
@@ -174,7 +177,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Description :"
-                android:textColor="#5D6698"
+                android:textColor="@color/black"
                 android:textColorHighlight="#407983" />
 
             <TextView
@@ -193,7 +196,7 @@
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="86dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:onClick="addToCart_OnClick"
                 android:text="Add To Cart" />
