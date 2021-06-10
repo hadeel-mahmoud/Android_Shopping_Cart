@@ -3,6 +3,7 @@ package edu.cs.birzeit.android_group_assignment_1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,9 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
 
 
+        holder.image.setImageResource(item.getImage());
+
+
     }
 
 
@@ -54,6 +58,7 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
 
         public TextView itemName,price,rating;
         private LinearLayout itemLayout;
+        public ImageView image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -61,7 +66,7 @@ public class RecyclerviewItemAdapter extends RecyclerView.Adapter<RecyclerviewIt
             itemName = itemView.findViewById(R.id.itemName);
             price = itemView.findViewById(R.id.price);
             rating = itemView.findViewById(R.id.rating);
-
+            image=itemView.findViewById(R.id.itemPhoto);
             itemLayout =  itemView.findViewById(R.id.itemLayout);
 
             itemView.setOnClickListener(this);
