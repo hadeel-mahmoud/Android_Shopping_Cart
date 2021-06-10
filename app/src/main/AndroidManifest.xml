@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Group_Assignment_1"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Cart"/>
+        <activity android:name=".Summary"></activity>
+        <activity android:name=".Cart" />
         <activity android:name=".ViewItemActivity" />
         <activity
             android:name=".RecyclerViewActivity"
