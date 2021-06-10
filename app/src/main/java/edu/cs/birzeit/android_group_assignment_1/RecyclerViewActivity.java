@@ -46,7 +46,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         itemsArray[0] = new Item("Nike Sport Bag", 120, "4.5","3", "NIKE VARSITY GIRL MEDIUM BAG", "Bags",R.drawable.img1);
         itemsArray[1] = new Item("Puma Water Bottle", 30, "3","1", "Puma Unisex Sports Water Bottle Water Bottle Workout Sport Classic", "Water Bottles", R.drawable.img2);
         itemsArray[2] = new Item("Dumbbells", 60, "4","6", "Yoga Mad Pair of 3Kg Neo Dumbbells - Orange", "Dumbbells", R.drawable.img3);
-
+       //itemsArray[3] = new Item("GEAK 4Pack Band Compatible with Apple Watch 38mm 40mm", 14, "4","6", "Soft Sport Silicone Replacement Strap for iWatch Series SE 6 5 4 3 2 1 Women Men, Black/Blue Gray/White/Gray Mad Pair of 3Kg Neo Dumbbells - Orange", "Watch", R.drawable.watch);
         prepareItems(false,"");
         
 

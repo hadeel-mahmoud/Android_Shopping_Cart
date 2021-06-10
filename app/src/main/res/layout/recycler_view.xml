@@ -19,7 +19,7 @@
 
         <EditText
             android:id="@+id/searchEdt"
-            android:layout_width="match_parent"
+            android:layout_width="222dp"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
