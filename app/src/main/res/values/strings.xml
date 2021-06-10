@@ -6,4 +6,5 @@
     <string name="search_by_name">Search By Name</string>
     <string name="search">Search</string>
     <string name="add_student">Add item</string>
+    <string name="view_cart_items">View Cart Items</string>
 </resources>

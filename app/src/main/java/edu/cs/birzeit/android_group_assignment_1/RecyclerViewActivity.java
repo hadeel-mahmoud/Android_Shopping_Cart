@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -57,6 +60,23 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_ui,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.item1) {
+            Intent displayDataIntent = new Intent(RecyclerViewActivity.this, Cart.class);
+
+            startActivity(displayDataIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void searchClick(View view) {
         searchText = (EditText) findViewById(R.id.searchEdt);
         prepareItems( true,searchText.getText().toString());
@@ -104,7 +124,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         listener=new RecyclerviewItemAdapter.ClickListener(){
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getApplicationContext(),"Position = "+position+"\n Item = "+"hi",Toast.LENGTH_SHORT).show();
                 Intent displayDataIntent = new Intent(RecyclerViewActivity.this, ViewItemActivity.class);
 
                 String cvString = gson.toJson(position);
