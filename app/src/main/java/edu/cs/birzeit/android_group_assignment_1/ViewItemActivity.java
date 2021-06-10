@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewItemActivity extends AppCompatActivity {
@@ -22,13 +22,16 @@ public class ViewItemActivity extends AppCompatActivity {
     Item currentItem;
     ImageView image;
 
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+    Gson gson = new Gson();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_item);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Gson gson = new Gson();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String allItemsJson = prefs.getString("allItems", "");
         Type type = new TypeToken<List<Item>>() {
         }.getType();
@@ -49,28 +52,39 @@ public class ViewItemActivity extends AppCompatActivity {
 
 
         ItemName.setText(currentItem.getItemName());
-        System.out.println(currentItem.getPrice()+"PRICE");
         Price.setText(Integer.toString(currentItem.getPrice()));
         Rating.setText(currentItem.getRating());
         ItemsRemaining.setText(currentItem.getItemName());
         Description.setText(currentItem.getDescription());
         Category.setText(currentItem.getCategory());
-
         image.setImageResource(currentItem.getImage());
-
-//        Description.setText(currentItem.getDescription());
-//        ItemsRemaining.setText(currentItem.getItemsRemaining());
-//        Rating.setText(currentItem.getRating());
-//        Category.setText(currentItem.getCategory());
-//        Price.setText(currentItem.getPrice());
-
-
-        //Toast.makeText(getApplicationContext(),"Name: "+movie.getName(), Toast.LENGTH_LONG).show();
-
-
     }
 
     public void addToCart_OnClick(View view) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String allCartItems = prefs.getString("allCartItems", "");
+        Type type = new TypeToken<List<Item>>() {
+        }.getType();
+
+        List<Item> itemsList = gson.fromJson(allCartItems, type);
+
+
+        if(itemsList!=null){
+            itemsList.add(currentItem);
+
+        }else {
+            itemsList= new ArrayList<>();
+            itemsList.add(currentItem);
+
+        }
+        System.out.println(itemsList+"LIST");
         Toast.makeText(getApplicationContext(), "item " + "added to cart", Toast.LENGTH_SHORT).show();
+//
+
+        prefs=PreferenceManager.getDefaultSharedPreferences(ViewItemActivity.this);
+        editor= prefs.edit();
+        String items = gson.toJson(itemsList);
+        editor.putString("allCartItems", items);
+        editor.commit();
     }
 }
