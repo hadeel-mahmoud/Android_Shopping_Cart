@@ -31,7 +31,7 @@ public class RecyclerViewCartAdapter extends RecyclerView.Adapter<RecyclerViewCa
     public void onBindViewHolder(RecyclerViewCartAdapter.MyViewHolder holder, final int position) {
         final Item item = studentsList.get(position);
         holder.itemName.setText(("Item Name: "+item.getItemName()));
-        holder.price.setText(("Price: "+item.getPrice()+"ILS"));
+        holder.price.setText(("Price: "+item.getPrice()+" ILS"));
         holder.rating.setText(("Rating: "+item.getRating()));
 
         holder.description.setText(("Description: "+item.getDescription()));

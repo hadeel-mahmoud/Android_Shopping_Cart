@@ -55,12 +55,12 @@ public class ViewItemActivity extends AppCompatActivity {
         image = findViewById(R.id.imageView);
 
 
-        ItemName.setText(currentItem.getItemName());
-        Price.setText(Integer.toString(currentItem.getPrice()));
-        Rating.setText(currentItem.getRating());
-        ItemsRemaining.setText(currentItem.getItemName());
-        Description.setText(currentItem.getDescription());
-        Category.setText(currentItem.getCategory());
+        ItemName.setText("Item Name: "+currentItem.getItemName());
+        Price.setText("Price: "+currentItem.getPrice()+" ILS");
+        Rating.setText("Rating: "+currentItem.getRating());
+        ItemsRemaining.setText("Items Remaining: "+currentItem.getItemName());
+        Description.setText("Description: "+currentItem.getDescription());
+        Category.setText("Category: "+currentItem.getCategory());
         image.setImageResource(currentItem.getImage());
     }
 

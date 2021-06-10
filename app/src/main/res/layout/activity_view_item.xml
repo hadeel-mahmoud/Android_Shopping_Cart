@@ -11,17 +11,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/ic_lock_background"
         android:gravity="center|top"
         android:orientation="vertical"
         tools:context=".ViewItemActivity">
 
-
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="331dp"
-            android:layout_height="185dp"
+            android:layout_width="450dp"
+            android:layout_height="200dp"
             android:layout_margin="16dp" />
 
         <LinearLayout
@@ -29,39 +28,20 @@
             android:layout_height="wrap_content"
             android:background="#C67055"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:paddingTop="100dp"
-            android:paddingBottom="10dp">
+            android:padding="5dp">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="224dp"
-                android:layout_height="40dp"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:ems="10"
-                android:fontFamily="sans-serif-black"
-                android:inputType="textPersonName"
-                android:text="Item Name:"
-                android:textColor="@color/black"
-                android:textColorHighlight="#407983" />
+                android:padding="10dp"
+                android:textSize="16sp"
 
-            <TextView
                 android:id="@+id/itemName"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/ic_lock_background"
-            android:orientation="horizontal"
-            android:padding="5dp" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,49 +50,30 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:ems="10"
-                android:fontFamily="sans-serif-black"
-                android:text="Price:"
-                android:textColor="@color/black"
-                android:textColorHighlight="#407983" />
 
             <TextView
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="wrap_content"
             android:background="#C67055"
             android:orientation="horizontal"
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="194dp"
-                android:layout_height="33dp"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:ems="10"
-                android:fontFamily="sans-serif-black"
-                android:text="Items Remaining:"
-                android:textColor="@color/black"
-                android:textColorHighlight="#407983" />
-
-            <TextView
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:id="@+id/ItemsRemaining"
-                android:layout_width="188dp"
-                android:layout_height="46dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10" />
 
@@ -120,47 +81,33 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:background="@color/ic_lock_background"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="46dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
-                android:shadowColor="#FFFFFF"
-                android:text="Category:"
-                android:textColor="@color/black"
-                android:textColorHighlight="#407983" />
 
             <TextView
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:id="@+id/Category"
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:background="#C67055"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Rating:"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
 
             <TextView
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:id="@+id/Rating"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -171,32 +118,24 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
-                android:text="Description :"
-                android:textColor="@color/black"
-                android:textColorHighlight="#407983" />
-
-            <TextView
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:id="@+id/Description"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="addToCart_OnClick"
                 android:text="Add To Cart" />

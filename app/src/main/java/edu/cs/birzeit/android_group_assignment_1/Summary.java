@@ -59,10 +59,10 @@ public class Summary extends AppCompatActivity {
         System.out.println(price+"price");
 //
         Items.setText(items);
-        Price.setText("Price: "+price);
-        Tax.setText("Total Tax Added: "+(int)(tax*price));
+        Price.setText("Price: "+price+" ILS");
+        Tax.setText("Total Tax Added: "+(int)(tax*price)+" ILS");
         int  finalValue= (int) ((tax*price)+price);
-        TotalPrice.setText("Total Price: "+finalValue);
+        TotalPrice.setText("Total Price: "+finalValue+" ILS");
         System.out.println(totalPrice+"PRICE");
     }
 

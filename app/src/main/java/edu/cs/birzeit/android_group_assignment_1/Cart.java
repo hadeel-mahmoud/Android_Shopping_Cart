@@ -25,8 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Cart extends AppCompatActivity {
-
-    private final List<Item> studentsList = new ArrayList<>();
     RecyclerViewCartAdapter recyclerviewItemAdapter;
     RecyclerView recyclerView;
 
